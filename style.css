@@ -177,3 +177,14 @@ body, .navbar, .project-panel, .project-toggle, .projects-toggle,
   .hero-photo{display:flex; justify-content:center}
   .hero-photo img{width:170px; height:170px}
 }
+
+@keyframes bgShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+html, body {
+  background: linear-gradient(270deg, #0b0c10, #121317, #0b0c10);
+  background-size: 600% 600%;
+  animation: bgShift 20s ease infinite;
+}
