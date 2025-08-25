@@ -3,7 +3,10 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     const id = a.getAttribute('href').slice(1);
     const el = document.getElementById(id);
-    if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth' }); }
+    if (el) { 
+      e.preventDefault(); 
+      el.scrollIntoView({ behavior: 'smooth' }); 
+    }
   });
 });
 
@@ -14,22 +17,29 @@ if (backBtn) {
     backBtn.style.display = window.scrollY > 400 ? 'block' : 'none';
   window.addEventListener('scroll', toggleBackBtn);
   toggleBackBtn();
-  backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  backBtn.addEventListener('click', () => 
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  );
 }
 
-// ===== Dark mode toggle (with persistence) =====
+// ===== Dark/Light mode toggle (with persistence) =====
 const darkToggle = document.getElementById('darkModeToggle');
-const setTheme = (mode) => {
-  document.documentElement.dataset.theme = mode; // use [data-theme="dark"] in CSS
+
+function setTheme(mode) {
+  document.documentElement.dataset.theme = mode; // sets [data-theme]
   localStorage.setItem('theme', mode);
   if (darkToggle) {
     darkToggle.setAttribute('aria-pressed', mode === 'dark' ? 'true' : 'false');
     darkToggle.textContent = mode === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode';
   }
-};
-setTheme(localStorage.getItem('theme') || 'dark'); // default to dark
+}
+
+// Initialize theme (use saved or default to dark)
+setTheme(localStorage.getItem('theme') || 'dark');
+
 darkToggle?.addEventListener('click', () => {
-  const next = (localStorage.getItem('theme') || 'dark') === 'dark' ? 'light' : 'dark';
+  const current = document.documentElement.dataset.theme;
+  const next = current === 'dark' ? 'light' : 'dark';
   setTheme(next);
 });
 
@@ -51,9 +61,12 @@ projectsToggle?.addEventListener('click', () => {
   const expanded = projectsToggle.getAttribute('aria-expanded') === 'true';
   projectsToggle.setAttribute('aria-expanded', String(!expanded));
   projectsContent.hidden = expanded;
-  projectsToggle.textContent = expanded ? '📂 Show Projects' : '📁 Hide Projects';
+  projectsToggle.textContent = expanded 
+    ? '📂 Show Projects' 
+    : '📁 Hide Projects';
 });
-// ===== Mobile nav toggle (if you add a hamburger later) =====
+
+// ===== Mobile nav toggle (future optional) =====
 // const btn = document.querySelector('.menu-toggle');
 // const nav = document.querySelector('#nav');
 // btn?.addEventListener('click', () => {
