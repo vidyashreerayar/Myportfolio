@@ -30,8 +30,9 @@
   /* Reset */
   * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
   
-  body { background-color: var(--bg); color: var(--text); line-height: 1.6; transition: background-color .3s, color .3s; padding-bottom: 50px; }
-  body.dark-mode { background-color: var(--bg); color: var(--text); }
+  /* Base text/layout (background handled later with gradients) */
+  body { color: var(--text); line-height: 1.6; transition: background .3s, color .3s; padding-bottom: 50px; }
+  body.dark-mode { color: var(--text); }
   
   h1,h2,h3,h4 { margin-bottom: 15px; color: #222; }
   body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode h4 { color: #eee; }
@@ -46,24 +47,24 @@
   .navbar a:hover, .navbar a.active, #darkModeToggle:hover { color: var(--gold); }
   #darkModeToggle { cursor: pointer; background: none; border: none; }
   
+  /* Hero: full-width banner with German gradient */
   .hero-section {
     width: 100%;
     max-width: none;
     margin: 0 0 60px 0;
-    padding: 80px 20px;  /* more space for banner look */
-    background: linear-gradient(90deg, #000000 0%, #DD0000 50%, #FFCC00 100%);
-    color: #fff; /* text white on flag background */
-    border-radius: 0;   /* no rounded corners, full banner */
+    padding: 80px 20px;
+    /* subtle dark overlay + flag gradient for readability */
+    background-image:
+      linear-gradient(0deg, rgba(0,0,0,.15), rgba(0,0,0,.15)),
+      linear-gradient(90deg, #000000 0%, #DD0000 50%, #FFCC00 100%);
+    color: #fff;
+    border-radius: 0;
     box-shadow: 0 4px 10px rgba(0,0,0,.4);
     text-align: center;
   }
-  
-  /* keep hero text readable */
   .hero-section h1,
   .hero-section h2,
-  .hero-section p {
-    color: #fff;
-  }
+  .hero-section p { color: #fff; }
   
   /* profile image pops against gradient */
   .hero-section img {
@@ -74,24 +75,22 @@
     box-shadow: 0 4px 12px rgba(0,0,0,.5);
     margin-bottom: 25px;
   }
-/* Dark mode hero banner */
-body.dark-mode .hero-section {
-  background: linear-gradient(90deg, #000000 0%, #1a0000 50%, #660000 100%);
-  color: #fff;
-  box-shadow: 0 4px 12px rgba(255, 0, 0, 0.4);
-}
-
-body.dark-mode .hero-section h1,
-body.dark-mode .hero-section h2,
-body.dark-mode .hero-section p {
-  color: #fff;
-}
-
-body.dark-mode .hero-section img {
-  border: 5px solid #ffcc00; /* gold outline in dark mode */
-  box-shadow: 0 4px 12px rgba(255, 204, 0, 0.5);
-}
   
+  /* Dark mode hero banner (keep gradient, don't override elsewhere) */
+  body.dark-mode .hero-section {
+    background-image:
+      linear-gradient(0deg, rgba(0,0,0,.25), rgba(0,0,0,.25)),
+      linear-gradient(90deg, #000000 0%, #1a0000 50%, #660000 100%);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(255, 0, 0, 0.4);
+  }
+  body.dark-mode .hero-section h1,
+  body.dark-mode .hero-section h2,
+  body.dark-mode .hero-section p { color: #fff; }
+  body.dark-mode .hero-section img {
+    border: 5px solid #ffcc00; /* gold outline in dark mode */
+    box-shadow: 0 4px 12px rgba(255, 204, 0, 0.5);
+  }
   
   /* Sections */
   section { max-width: 900px; margin: 40px auto; padding: 30px 20px; background: var(--panel); border-radius: 10px; box-shadow: 0 4px 12px rgb(0 0 0 / .1); transition: background-color .3s, color .3s; }
@@ -135,47 +134,45 @@ body.dark-mode .hero-section img {
   @media (max-width: 768px) {
     .projects-container { flex-direction: column; }
     .project-panel { flex: 1 1 100%; }
+  
+    /* smoother mobile scrolling */
+    body, body.dark-mode { background-attachment: scroll; }
   }
   
-  /* Optional: explicit dark-mode tweaks if you use a toggle class */
-  body.dark-mode .hero-section,
-  body.dark-mode section { background: var(--panel); }
+  /* Keep panels warm in dark mode, but DO NOT override hero */
+  body.dark-mode section:not(.hero-section) { background: var(--panel); }
   body.dark-mode .project-panel,
   body.dark-mode #skills,
   body.dark-mode #contact { background: var(--soft-gold); border-color: var(--soft-gold-border); color: #e8e0c7; }
-  body.dark-mode .project-details { background: #262012; color: #e8e0c7; border-color: var(--soft-gold-border); }
+  body.dark-mode .project-details { background: #262012; color: #e8e0c7; border-color: #6b5a1a; }
   
   /* Light mode background */
-body {
-  background: 
-    repeating-linear-gradient(
-      45deg,
-      rgba(255, 255, 255, 0.05) 0px,
-      rgba(255, 255, 255, 0.05) 2px,
-      transparent 2px,
-      transparent 6px
-    ),
-    linear-gradient(135deg, #000000, #DD0000, #FFCC00);
-  background-attachment: fixed; /* nice parallax effect */
-  background-size: cover;
-  color: var(--text);
-  line-height: 1.6;
-  transition: background .3s, color .3s;
-  padding-bottom: 50px;
-}
-
-/* Dark mode background */
-body.dark-mode {
-  background: 
-    repeating-linear-gradient(
-      45deg,
-      rgba(255, 255, 255, 0.03) 0px,
-      rgba(255, 255, 255, 0.03) 2px,
-      transparent 2px,
-      transparent 6px
-    ),
-    linear-gradient(135deg, #000000, #1a0000, #DD0000);
-  background-attachment: fixed;
-  background-size: cover;
-  color: var(--text);
-}
+  body {
+    background:
+      repeating-linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.05) 0px,
+        rgba(255, 255, 255, 0.05) 2px,
+        transparent 2px,
+        transparent 6px
+      ),
+      linear-gradient(135deg, #000000, #DD0000, #FFCC00);
+    background-attachment: fixed; /* nice parallax effect */
+    background-size: cover;
+  }
+  
+  /* Dark mode background */
+  body.dark-mode {
+    background:
+      repeating-linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.03) 0px,
+        rgba(255, 255, 255, 0.03) 2px,
+        transparent 2px,
+        transparent 6px
+      ),
+      linear-gradient(135deg, #000000, #1a0000, #DD0000);
+    background-attachment: fixed;
+    background-size: cover;
+  }
+  
