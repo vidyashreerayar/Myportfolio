@@ -46,15 +46,52 @@
   .navbar a:hover, .navbar a.active, #darkModeToggle:hover { color: var(--gold); }
   #darkModeToggle { cursor: pointer; background: none; border: none; }
   
-  /* Hero */
-  .hero-section { max-width: 600px; margin: 40px auto 60px; padding: 30px 30px 40px; background: var(--panel); border-radius: 20px; box-shadow: var(--shadow-red); text-align: center; transition: background-color .3s, box-shadow .3s; }
-  .hero-section img { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; margin-bottom: 25px; border: 5px solid var(--red); box-shadow: 0 4px 12px rgba(221,0,0,.25); transition: border-color .3s; }
-  .hero-section h1 { font-size: 2rem; font-weight: 700; margin-bottom: 12px; color: #222; letter-spacing: .02em; }
-  .hero-section h2 { font-size: 1.4rem; font-weight: 700; color: var(--red); margin-bottom: 28px; letter-spacing: .04em; }
-  .hero-section p { font-size: 1.15rem; color: #555; margin-bottom: 30px; font-weight: 500; line-height: 1.4; }
-  body.dark-mode .hero-section p { color: #bbb; }
-  .hero-section .resume-button { display: inline-block; background: var(--red); color: #fff; padding: 14px 30px; border-radius: 30px; font-weight: 700; font-size: 1.15rem; box-shadow: var(--shadow-red); border: none; cursor: pointer; }
-  .hero-section .resume-button:hover { background: #b80000; box-shadow: var(--shadow-red-strong); }
+  .hero-section {
+    width: 100%;
+    max-width: none;
+    margin: 0 0 60px 0;
+    padding: 80px 20px;  /* more space for banner look */
+    background: linear-gradient(90deg, #000000 0%, #DD0000 50%, #FFCC00 100%);
+    color: #fff; /* text white on flag background */
+    border-radius: 0;   /* no rounded corners, full banner */
+    box-shadow: 0 4px 10px rgba(0,0,0,.4);
+    text-align: center;
+  }
+  
+  /* keep hero text readable */
+  .hero-section h1,
+  .hero-section h2,
+  .hero-section p {
+    color: #fff;
+  }
+  
+  /* profile image pops against gradient */
+  .hero-section img {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    border: 5px solid #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,.5);
+    margin-bottom: 25px;
+  }
+/* Dark mode hero banner */
+body.dark-mode .hero-section {
+  background: linear-gradient(90deg, #000000 0%, #1a0000 50%, #660000 100%);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(255, 0, 0, 0.4);
+}
+
+body.dark-mode .hero-section h1,
+body.dark-mode .hero-section h2,
+body.dark-mode .hero-section p {
+  color: #fff;
+}
+
+body.dark-mode .hero-section img {
+  border: 5px solid #ffcc00; /* gold outline in dark mode */
+  box-shadow: 0 4px 12px rgba(255, 204, 0, 0.5);
+}
+  
   
   /* Sections */
   section { max-width: 900px; margin: 40px auto; padding: 30px 20px; background: var(--panel); border-radius: 10px; box-shadow: 0 4px 12px rgb(0 0 0 / .1); transition: background-color .3s, color .3s; }
@@ -108,3 +145,37 @@
   body.dark-mode #contact { background: var(--soft-gold); border-color: var(--soft-gold-border); color: #e8e0c7; }
   body.dark-mode .project-details { background: #262012; color: #e8e0c7; border-color: var(--soft-gold-border); }
   
+  /* Light mode background */
+body {
+  background: 
+    repeating-linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.05) 0px,
+      rgba(255, 255, 255, 0.05) 2px,
+      transparent 2px,
+      transparent 6px
+    ),
+    linear-gradient(135deg, #000000, #DD0000, #FFCC00);
+  background-attachment: fixed; /* nice parallax effect */
+  background-size: cover;
+  color: var(--text);
+  line-height: 1.6;
+  transition: background .3s, color .3s;
+  padding-bottom: 50px;
+}
+
+/* Dark mode background */
+body.dark-mode {
+  background: 
+    repeating-linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.03) 0px,
+      rgba(255, 255, 255, 0.03) 2px,
+      transparent 2px,
+      transparent 6px
+    ),
+    linear-gradient(135deg, #000000, #1a0000, #DD0000);
+  background-attachment: fixed;
+  background-size: cover;
+  color: var(--text);
+}
