@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1" />
+ <title>Vidyashree Rayar - Portfolio</title>
+ <!-- Use relative path -->
+ <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+ <button id="backToTop" title="Go to top" aria-label="Back to top">↑</button>
+
+ <!-- Navigation Bar -->
+ <nav class="navbar" role="navigation" aria-label="Primary">
+   <ul>
+     <li><a href="#about" class="nav-link">About</a></li>
+     <li><a href="#skills" class="nav-link">Skills</a></li>
+     <li><a href="#projects" class="nav-link">Projects</a></li>
+     <li><a href="#contact" class="nav-link">Contact</a></li>
+     <li>
+       <button id="darkModeToggle" type="button" aria-pressed="false">🌙 Dark Mode</button>
+     </li>
+   </ul>
+ </nav>
+
+ <!-- About Section -->
+ <section id="about" class="hero-section">
+   <div class="hero-photo">
+     <!-- Relative image path -->
+     <img src="myphoto.jpg" alt="My Photo" />
+   </div>
+
+   <div class="hero-text">
+     <h1>Hi, I’m Vidyashree Rayar</h1>
+     <h2>BI Data Analyst | Machine Learning and Computer Vision Engineer</h2>
+     <p>Your partner in data-driven solutions</p>
+     <!-- Relative resume path -->
+     <a href="vidyashreerayar_resume.pdf" download class="resume-button">
+       📄 Download My Resume
+     </a>
+   </div>
+ </section>
+
+ <!-- Skills -->
+ <section id="skills">
+   <h3>Skills</h3>
+   <ul>
+     <li>Data Science</li>
+     <li>Computer Vision</li>
+     <li>Machine Learning</li>
+     <li>Python (Pandas, NumPy, scikit-learn)</li>
+     <li>Deep Learning (TensorFlow, Keras, PyTorch)</li>
+     <li>Data Visualization (Matplotlib, Seaborn, Power BI)</li>
+     <li>Business Intelligence (SQL, Tableau)</li>
+   </ul>
+ </section>
+
+
+ <!-- Projects -->
+ <section id="projects">
+   <h3>Projects</h3>
+   <button id="projectsToggle" class="projects-toggle" type="button" aria-controls="projectsContent" aria-expanded="true">
+     📂 Hide Projects
+   </button>
+
+
+   <div id="projectsContent">
+     <div class="projects-container">
+       <!-- AI Projects -->
+       <div class="project-panel">
+         <h4>🤖 AI Projects</h4>
+
+
+         <!-- Project 1 -->
+         <button class="project-toggle" type="button" aria-controls="p1" aria-expanded="false">
+           Enhancing Facial Emotion Recognition in Music Recommendation System
+         </button>
+         <div id="p1" class="project-details" hidden>
+           <p><strong>Category:</strong> Computer Vision, Affective Computing</p>
+           <p><strong>Description:</strong> Integrated CBAM with CNN for better facial emotion recognition, powering mood-based music recommendations.</p>
+           <ul>
+             <li>Python, CNN, CBAM, OpenCV</li>
+             <li>FER-2013 dataset</li>
+             <li>TensorFlow / PyTorch</li>
+           </ul>
+         </div>
+
+
+         <!-- Project 2 -->
+         <button class="project-toggle" type="button" aria-controls="p2" aria-expanded="false">
+           Conversational AI — Dialogflow CX Agent
+         </button>
+         <div id="p2" class="project-details" hidden>
+           <p><strong>Category:</strong> Conversational AI</p>
+           <p><strong>Description:</strong> Built a Dialogflow CX chatbot with multi-intent support, handling domain-specific user interactions.</p>
+         </div>
+
+
+         <!-- Project 3 -->
+         <button class="project-toggle" type="button" aria-controls="p3" aria-expanded="false">
+           Data Mining — Image Segmentation (k-means & DBSCAN)
+         </button>
+         <div id="p3" class="project-details" hidden>
+           <p><strong>Category:</strong> Computer Vision</p>
+           <p><strong>Description:</strong> Implemented custom k-means & DBSCAN for color image segmentation using pixel clustering.</p>
+         </div>
+
+
+         <!-- Project 4 -->
+         <button class="project-toggle" type="button" aria-controls="p4" aria-expanded="false">
+           Edge Histogram-Based Image Classification on Caltech101
+         </button>
+         <div id="p4" class="project-details" hidden>
+           <p><strong>Category:</strong> Machine Learning</p>
+           <p><strong>Description:</strong> Classified Caltech101 images using pre-extracted Edge Histogram features with k-NN, SVM, and Random Forest.</p>
+         </div>
+
+
+         <!-- Project 5 -->
+         <button class="project-toggle" type="button" aria-controls="p5" aria-expanded="false">
+           Estimating Solar Panel Fit from Satellite Images
+         </button>
+         <div id="p5" class="project-details" hidden>
+           <p><strong>Category:</strong> Computer Vision, Renewable Energy</p>
+           <p><strong>Description:</strong> Used DeepLabV3 and MiDaS for rooftop segmentation and slope estimation, predicting solar panel capacity.</p>
+         </div>
+       </div>
+
+
+       <!-- BI Projects -->
+       <div class="project-panel">
+         <h4>📊 BI Projects</h4>
+
+
+         <!-- Project 6 -->
+         <button class="project-toggle" type="button" aria-controls="p6" aria-expanded="false">
+           AI Meets Power BI: Airbnb Listings Demo
+         </button>
+         <div id="p6" class="project-details" hidden>
+           <p><strong>Category:</strong> BI with AI Integration</p>
+           <p><strong>Description:</strong> Built a Power BI dashboard enriched with Azure Vision API tags and clustering to analyze Airbnb listings.</p>
+         </div>
+
+
+         <!-- Project 7 -->
+         <button class="project-toggle" type="button" aria-controls="p7" aria-expanded="false">
+           Power BI Dashboard for Hotel Reservations
+         </button>
+         <div id="p7" class="project-details" hidden>
+           <p><strong>Category:</strong> BI, Data Analytics</p>
+           <p><strong>Description:</strong> Interactive Power BI dashboard analyzing hotel cancellations, ADR, and revenue trends.</p>
+         </div>
+       </div>
+     </div>
+   </div>
+ </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h3>Contact</h3>
+    <p>Email: <a href="mailto:vidyashreerayar325@gmail.com">vidyashreerayar325@gmail.com</a></p>
+    <p>LinkedIn: <a href="https://linkedin.com/in/vidyashreerayar" target="_blank" rel="noopener">linkedin.com/in/vidyashreerayar</a></p>
+  </section>
+ 
+  <!-- External JS (relative path) -->
+  <script defer src="script.js"></script>
+ </body>
+ </html>
