@@ -16,16 +16,6 @@ It showcases my background, skills, and selected projects in **Business Intellig
 
 ---
 
-## 📂 Project Structure
-my-portfolio/
-├── index.html # Main portfolio page
-├── style.css # Theme and layout
-├── script.js # Interactivity (dark mode, smooth scroll, etc.)
-├── myphoto.jpg # Profile picture
-├── vidyashreerayar_resume.pdf # Downloadable resume
-├── README.md # Project description
-└── .gitignore # Ignore local files (e.g., .DS_Store)
-
 ## 🚀 Deployment
 This portfolio is hosted using **GitHub Pages**.
 
