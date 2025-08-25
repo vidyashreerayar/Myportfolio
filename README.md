@@ -16,17 +16,15 @@ It showcases my background, skills, and selected projects in **Business Intellig
 
 ---
 
-## 📂 Structure
+## 📂 Project Structure
 my-portfolio/
-│── index.html # Main portfolio page
-│── style.css # Theme and layout
-│── script.js # Interactivity (dark mode, smooth scroll, etc.)
-│── myphoto.jpg # Profile picture
-│── vidyashreerayar_resume.pdf # Downloadable resume
-│── README.md # Project description
-│── .gitignore # Ignore local files (e.g., .DS_Store)
-
----
+├── index.html # Main portfolio page
+├── style.css # Theme and layout
+├── script.js # Interactivity (dark mode, smooth scroll, etc.)
+├── myphoto.jpg # Profile picture
+├── vidyashreerayar_resume.pdf # Downloadable resume
+├── README.md # Project description
+└── .gitignore # Ignore local files (e.g., .DS_Store)
 
 ## 🚀 Deployment
 This portfolio is hosted using **GitHub Pages**.
@@ -39,4 +37,3 @@ This portfolio is hosted using **GitHub Pages**.
 ## 📬 Contact
 - Email: [vidyashreerayar325@gmail.com](mailto:vidyashreerayar325@gmail.com)  
 - LinkedIn: [linkedin.com/in/vidyashreerayar](https://linkedin.com/in/vidyashreerayar)  
-- GitHub: [github.com/<your-username>](https://github.com/vidyashreerayar)
