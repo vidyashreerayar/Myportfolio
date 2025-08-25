@@ -1,178 +1,96 @@
-/* =========================
-   German Palette Variables
-   ========================= */
-   :root{
-    --black:#000000;
-    --red:#DD0000;
-    --gold:#FFCC00;
-  
-    --text:#333333;
-    --bg:#f1f1f1;
-    --panel:#ffffff;
-  
-    --soft-gold:#fff4cc;             /* replaces light blue panels */
-    --soft-gold-border:#ffe08a;
-  
-    --shadow-red: 0 8px 20px rgba(221,0,0,.15);
-    --shadow-red-strong: 0 10px 22px rgba(221,0,0,.28);
-  }
-  
-  @media (prefers-color-scheme: dark){
-    :root{
-      --text:#e0e0e0;
-      --bg:#121212;
-      --panel:#1e1e1e;
-      --soft-gold:#2a2512;           /* subtle warm panel in dark */
-      --soft-gold-border:#6b5a1a;
-    }
-  }
-  
-  /* Reset */
-  * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-  
-  /* Base text/layout (background handled later with gradients) */
-  body { color: var(--text); line-height: 1.6; transition: background .3s, color .3s; padding-bottom: 50px; }
-  body.dark-mode { color: var(--text); }
-  
-  h1,h2,h3,h4 { margin-bottom: 15px; color: #222; }
-  body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode h4 { color: #eee; }
-  
-  a { color: var(--red); text-decoration: none; transition: color .3s; }
-  a:hover { color: var(--black); }
-  
-  /* Navbar */
-  .navbar { background-color: var(--black); padding: 10px 20px; position: sticky; top: 0; z-index: 9999; box-shadow: 0 2px 6px rgba(0,0,0,.25); }
-  .navbar ul { display: flex; justify-content: center; list-style: none; gap: 20px; flex-wrap: wrap; }
-  .navbar a, #darkModeToggle { color: #fff; font-weight: 600; font-size: 1rem; }
-  .navbar a:hover, .navbar a.active, #darkModeToggle:hover { color: var(--gold); }
-  #darkModeToggle { cursor: pointer; background: none; border: none; }
-  
-  /* Hero: full-width banner with German gradient */
-  .hero-section {
-    width: 100%;
-    max-width: none;
-    margin: 0 0 60px 0;
-    padding: 80px 20px;
-    /* subtle dark overlay + flag gradient for readability */
-    background-image:
-      linear-gradient(0deg, rgba(0,0,0,.15), rgba(0,0,0,.15)),
-      linear-gradient(90deg, #000000 0%, #DD0000 50%, #FFCC00 100%);
-    color: #fff;
-    border-radius: 0;
-    box-shadow: 0 4px 10px rgba(0,0,0,.4);
-    text-align: center;
-  }
-  .hero-section h1,
-  .hero-section h2,
-  .hero-section p { color: #fff; }
-  
-  /* profile image pops against gradient */
-  .hero-section img {
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
-    border: 5px solid #fff;
-    box-shadow: 0 4px 12px rgba(0,0,0,.5);
-    margin-bottom: 25px;
-  }
-  
-  /* Dark mode hero banner (keep gradient, don't override elsewhere) */
-  body.dark-mode .hero-section {
-    background-image:
-      linear-gradient(0deg, rgba(0,0,0,.25), rgba(0,0,0,.25)),
-      linear-gradient(90deg, #000000 0%, #1a0000 50%, #660000 100%);
-    color: #fff;
-    box-shadow: 0 4px 12px rgba(255, 0, 0, 0.4);
-  }
-  body.dark-mode .hero-section h1,
-  body.dark-mode .hero-section h2,
-  body.dark-mode .hero-section p { color: #fff; }
-  body.dark-mode .hero-section img {
-    border: 5px solid #ffcc00; /* gold outline in dark mode */
-    box-shadow: 0 4px 12px rgba(255, 204, 0, 0.5);
-  }
-  
-  /* Sections */
-  section { max-width: 900px; margin: 40px auto; padding: 30px 20px; background: var(--panel); border-radius: 10px; box-shadow: 0 4px 12px rgb(0 0 0 / .1); transition: background-color .3s, color .3s; }
-  
-  /* Skills */
-  #skills { background: var(--soft-gold); color: #4a3b00; border-radius: 12px; box-shadow: 0 6px 18px rgba(221,0,0,.12); }
-  #skills h3 { color: var(--black); font-weight: 800; border-bottom: 3px solid var(--gold); padding-bottom: 8px; margin-bottom: 30px; }
-  #skills ul { list-style: disc inside; }
-  
-  /* Projects */
-  .projects-container { margin-top: 20px; display: flex; gap: 20px; justify-content: center; align-items: flex-start; flex-wrap: wrap; }
-  .project-panel { flex: 1 1 45%; min-width: 280px; background: var(--soft-gold); padding: 15px; border-radius: 8px; box-shadow: 0 4px 12px rgba(221,0,0,.12); color: #4a3b00; border: 1px solid var(--soft-gold-border); }
-  .project-panel h4 { margin-bottom: 15px; color: var(--red); border-bottom: 2px solid var(--gold); padding-bottom: 5px; font-size: 1.3rem; font-weight: 800; }
-  
-  /* Projects master toggle */
-  #projectsToggle.projects-toggle { background: #fff0b3; color: var(--black); padding: 16px 24px; width: 80%; max-width: 600px; margin: 20px auto; text-align: center; border: 1px solid var(--soft-gold-border); border-radius: 8px; font-weight: 800; font-size: 1.5rem; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 10px; box-shadow: 0 2px 5px rgba(0,0,0,.15); }
-  #projectsToggle:hover { background: #ffe27a; }
-  
-  /* Individual project toggles */
-  .project-toggle { background: #fff6cc; color: var(--black); padding: 10px 15px; width: 100%; text-align: left; border: 1px solid var(--soft-gold-border); border-radius: 5px; font-weight: 700; cursor: pointer; margin-bottom: 8px; }
-  .project-toggle:hover { filter: brightness(0.98); }
-  
-  /* Project details */
-  .project-details { background: #fffaf0; border: 1px solid var(--soft-gold-border); border-left: 4px solid var(--red); padding: 15px; margin-bottom: 10px; border-radius: 5px; color: #4a3b00; }
-  .project-details ul { list-style: disc; padding-left: 20px; margin: 10px 0; }
-  .project-details li { margin-bottom: 5px; }
-  
-  /* Contact */
-  #contact { text-align: center; font-size: 1.1rem; background: var(--soft-gold); border-radius: 12px; box-shadow: 0 6px 18px rgba(221,0,0,.12); padding: 30px 20px; color: #4a3b00; max-width: 900px; margin: 40px auto; }
-  #contact a { font-weight: 700; text-decoration: underline; color: var(--red); }
-  #contact a:hover { color: var(--black); }
-  
-  /* Back to top */
-  #backToTop { position: fixed; bottom: 30px; right: 30px; background: var(--red); color: #fff; border: none; padding: 12px 16px; border-radius: 50%; cursor: pointer; display: none; font-size: 1.5rem; box-shadow: 0 4px 8px rgba(221,0,0,.35); z-index: 9999; }
-  #backToTop:hover { background: #b80000; }
-  
-  /* Utilities */
-  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
-  
-  /* Responsive */
-  @media (max-width: 768px) {
-    .projects-container { flex-direction: column; }
-    .project-panel { flex: 1 1 100%; }
-  
-    /* smoother mobile scrolling */
-    body, body.dark-mode { background-attachment: scroll; }
-  }
-  
-  /* Keep panels warm in dark mode, but DO NOT override hero */
-  body.dark-mode section:not(.hero-section) { background: var(--panel); }
-  body.dark-mode .project-panel,
-  body.dark-mode #skills,
-  body.dark-mode #contact { background: var(--soft-gold); border-color: var(--soft-gold-border); color: #e8e0c7; }
-  body.dark-mode .project-details { background: #262012; color: #e8e0c7; border-color: #6b5a1a; }
-  
-  /* Light mode background */
-  body {
-    background:
-      repeating-linear-gradient(
-        45deg,
-        rgba(255, 255, 255, 0.05) 0px,
-        rgba(255, 255, 255, 0.05) 2px,
-        transparent 2px,
-        transparent 6px
-      ),
-      linear-gradient(135deg, #000000, #DD0000, #FFCC00);
-    background-attachment: fixed; /* nice parallax effect */
-    background-size: cover;
-  }
-  
-  /* Dark mode background */
-  body.dark-mode {
-    background:
-      repeating-linear-gradient(
-        45deg,
-        rgba(255, 255, 255, 0.03) 0px,
-        rgba(255, 255, 255, 0.03) 2px,
-        transparent 2px,
-        transparent 6px
-      ),
-      linear-gradient(135deg, #000000, #1a0000, #DD0000);
-    background-attachment: fixed;
-    background-size: cover;
-  }
-  
+/* 1) Remove any @media (prefers-color-scheme: dark) :root overrides you had */
+
+/* 2) Light variables + dark variables via class */
+:root{
+  --black:#0f0f10;
+  --red:#C91C1C;      /* softer red */
+  --gold:#F5C400;     /* softer gold */
+
+  --text:#222;
+  --bg:#fafafa;
+  --panel:#ffffff;
+
+  --soft-gold:#fff7d6;
+  --soft-gold-border:#ffe08a;
+
+  --shadow:0 8px 20px rgba(0,0,0,.08);
+}
+body.dark-mode{
+  --text:#e8e8e8;
+  --bg:#121314;       /* not pitch black */
+  --panel:#1a1b1d;    /* soft charcoal */
+  --soft-gold:#2a2414;
+  --soft-gold-border:#6b5a1a;
+}
+
+/* Base */
+body{ color:var(--text); line-height:1.6; padding-bottom:50px; transition:background .3s,color .3s; }
+
+/* Light background: airy with faint color glows */
+body{
+  background:
+    radial-gradient(1200px 600px at -10% -10%, rgba(201,28,28,.06), transparent 60%),
+    radial-gradient(900px 500px at 110% 20%, rgba(245,196,0,.08), transparent 60%),
+    var(--bg);
+}
+/* Dark background: gentle, not harsh */
+body.dark-mode{
+  background:
+    radial-gradient(900px 500px at 0% 0%, rgba(201,28,28,.10), transparent 60%),
+    radial-gradient(800px 500px at 100% 20%, rgba(245,196,0,.06), transparent 60%),
+    var(--bg);
+}
+
+/* Navbar */
+.navbar{ background:var(--black); padding:10px 20px; position:sticky; top:0; z-index:9999; box-shadow:0 2px 6px rgba(0,0,0,.18); }
+.navbar a,#darkModeToggle{ color:#fff; }
+.navbar a:hover,#darkModeToggle:hover{ color:var(--gold); }
+
+/* Hero: full-width, but softened gradients */
+.hero-section{
+  width:100%; margin:0 0 60px 0; padding:72px 20px; text-align:center; border-radius:0; box-shadow:0 4px 10px rgba(0,0,0,.10);
+  background-image:
+    linear-gradient(0deg, rgba(0,0,0,.06), rgba(0,0,0,.06)),
+    linear-gradient(90deg, #171718 0%, #c03d3d 40%, #f2c94c 100%);
+  color:#fff;
+}
+.hero-section h1,.hero-section h2,.hero-section p{ color:#fff; }
+.hero-section img{ width:160px; height:160px; border-radius:50%; border:5px solid #fff; box-shadow:0 4px 12px rgba(0,0,0,.25); margin-bottom:25px; }
+
+body.dark-mode .hero-section{
+  background-image:
+    linear-gradient(0deg, rgba(0,0,0,.20), rgba(0,0,0,.20)),
+    linear-gradient(90deg, #151516 0%, #7a2a2a 45%, #b9902a 100%); /* muted gold */
+  box-shadow:0 4px 12px rgba(0,0,0,.25);
+}
+
+/* Panels */
+section{ max-width:900px; margin:40px auto; padding:30px 20px; background:var(--panel); border-radius:10px; box-shadow:0 4px 12px rgb(0 0 0 / .06); transition:background .3s,color .3s; }
+
+/* Warm cards */
+#skills{ background:var(--soft-gold); color:#4a3b00; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,.06); }
+#skills h3{ color:var(--black); border-bottom:3px solid var(--gold); padding-bottom:8px; margin-bottom:30px; }
+.projects-container{ margin-top:20px; display:flex; gap:20px; justify-content:center; align-items:flex-start; flex-wrap:wrap; }
+.project-panel{ flex:1 1 45%; min-width:280px; background:var(--soft-gold); padding:15px; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,.06); color:#4a3b00; border:1px solid var(--soft-gold-border); }
+.project-panel h4{ margin-bottom:15px; color:var(--red); border-bottom:2px solid var(--gold); padding-bottom:5px; font-size:1.3rem; font-weight:800; }
+
+/* Toggles & details */
+#projectsToggle.projects-toggle{ background:#fff5c2; color:#111; border:1px solid var(--soft-gold-border); }
+#projectsToggle:hover{ background:#ffe98f; }
+.project-toggle{ background:#fff8d9; color:#111; border:1px solid var(--soft-gold-border); }
+.project-details{ background:#fffaf0; border:1px solid var(--soft-gold-border); border-left:4px solid var(--red); color:#4a3b00; }
+
+body.dark-mode section:not(.hero-section){ background:var(--panel); }
+body.dark-mode .project-panel,
+body.dark-mode #skills,
+body.dark-mode #contact{ background:var(--soft-gold); border-color:var(--soft-gold-border); color:#e6dcc1; }
+body.dark-mode .project-details{ background:#262012; color:#e6dcc1; border-color:#6b5a1a; }
+
+/* Footer button */
+#backToTop{ position:fixed; bottom:30px; right:30px; background:var(--red); color:#fff; border:none; padding:12px 16px; border-radius:50%; display:none; font-size:1.5rem; box-shadow:0 4px 8px rgba(0,0,0,.20); z-index:9999; }
+#backToTop:hover{ background:#b80000; }
+
+@media (max-width:768px){
+  .projects-container{ flex-direction:column; }
+  .project-panel{ flex:1 1 100%; }
+}

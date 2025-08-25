@@ -3,9 +3,9 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     const id = a.getAttribute('href').slice(1);
     const el = document.getElementById(id);
-    if (el) { 
-      e.preventDefault(); 
-      el.scrollIntoView({ behavior: 'smooth' }); 
+    if (el) {
+      e.preventDefault();
+      el.scrollIntoView({ behavior: 'smooth' });
     }
   });
 });
@@ -14,10 +14,10 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 const backBtn = document.getElementById('backToTop');
 if (backBtn) {
   const toggleBackBtn = () =>
-    backBtn.style.display = window.scrollY > 400 ? 'block' : 'none';
+    (backBtn.style.display = window.scrollY > 400 ? 'block' : 'none');
   window.addEventListener('scroll', toggleBackBtn);
   toggleBackBtn();
-  backBtn.addEventListener('click', () => 
+  backBtn.addEventListener('click', () =>
     window.scrollTo({ top: 0, behavior: 'smooth' })
   );
 }
@@ -25,22 +25,23 @@ if (backBtn) {
 // ===== Dark/Light mode toggle (with persistence) =====
 const darkToggle = document.getElementById('darkModeToggle');
 
-function setTheme(mode) {
-  document.documentElement.dataset.theme = mode; // sets [data-theme]
-  localStorage.setItem('theme', mode);
+function applyTheme(isDark) {
+  document.body.classList.toggle('dark-mode', isDark);
   if (darkToggle) {
-    darkToggle.setAttribute('aria-pressed', mode === 'dark' ? 'true' : 'false');
-    darkToggle.textContent = mode === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode';
+    darkToggle.setAttribute('aria-pressed', isDark ? 'true' : 'false');
+    darkToggle.textContent = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
   }
+  localStorage.setItem('theme', isDark ? 'dark' : 'light');
 }
 
-// Initialize theme (use saved or default to dark)
-setTheme(localStorage.getItem('theme') || 'dark');
+// Initialize theme (use saved, default to LIGHT)
+const saved = localStorage.getItem('theme');
+applyTheme(saved === 'dark');
 
+// Toggle on click
 darkToggle?.addEventListener('click', () => {
-  const current = document.documentElement.dataset.theme;
-  const next = current === 'dark' ? 'light' : 'dark';
-  setTheme(next);
+  const nextIsDark = !document.body.classList.contains('dark-mode');
+  applyTheme(nextIsDark);
 });
 
 // ===== Project panels (accordion) =====
@@ -61,15 +62,7 @@ projectsToggle?.addEventListener('click', () => {
   const expanded = projectsToggle.getAttribute('aria-expanded') === 'true';
   projectsToggle.setAttribute('aria-expanded', String(!expanded));
   projectsContent.hidden = expanded;
-  projectsToggle.textContent = expanded 
-    ? '📂 Show Projects' 
+  projectsToggle.textContent = expanded
+    ? '📂 Show Projects'
     : '📁 Hide Projects';
 });
-
-// ===== Mobile nav toggle (future optional) =====
-// const btn = document.querySelector('.menu-toggle');
-// const nav = document.querySelector('#nav');
-// btn?.addEventListener('click', () => {
-//   const open = nav.classList.toggle('open');
-//   btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-// });
