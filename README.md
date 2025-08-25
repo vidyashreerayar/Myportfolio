@@ -1,41 +1,42 @@
-# portfolio
-Personal portfolio website showcasing my skills, projects, and experience in BI, Data Analytics, and AI.
-# Vidyashree Rayar — Portfolio 🌐
+# Portfolio – Vidyashree Rayar
 
-Personal portfolio website showcasing my **skills, projects, and professional experience** in **Business Intelligence (BI), Data Analytics, Machine Learning, and Computer Vision**.  
-
-🔗 **Live Site:** [View Portfolio](https://vidyashreerayar.github.io/portfolio/)  
+This repository contains my personal portfolio website, built with **HTML, CSS, and JavaScript**, and themed with the colors of the German flag (black, red, and gold).  
+It showcases my background, skills, and selected projects in **Business Intelligence, Data Analytics, Machine Learning, and Computer Vision**.
 
 ---
 
-## 📸 Preview
-![Portfolio Screenshot](./static/images/portfolio-preview.png)
+## 🔑 Features
+- Responsive design (works on desktop and mobile)
+- Dark/Light mode toggle with persistence
+- Smooth scrolling navigation
+- "Back to top" button
+- Accordion-style project details
+- Germany-inspired color theme
+- Downloadable resume
 
 ---
 
-## 🚀 Features
-- Clean, responsive design with **light/dark mode toggle** 🌙☀️  
-- Detailed sections for:
-  - **About Me**
-  - **Skills**
-  - **Projects** (AI & BI)
-  - **Work Experience**
-  - **Education**
-  - **Contact**
-- Interactive project accordion panels  
-- “Back to top” button for smooth navigation  
+## 📂 Structure
+my-portfolio/
+│── index.html # Main portfolio page
+│── style.css # Theme and layout
+│── script.js # Interactivity (dark mode, smooth scroll, etc.)
+│── myphoto.jpg # Profile picture
+│── vidyashreerayar_resume.pdf # Downloadable resume
+│── README.md # Project description
+│── .gitignore # Ignore local files (e.g., .DS_Store)
 
 ---
 
-## 📂 Tech Stack
-- **Frontend:** HTML5, CSS3, JavaScript (vanilla)  
-- **Hosting:** GitHub Pages  
+## 🚀 Deployment
+This portfolio is hosted using **GitHub Pages**.
+
+- Repo: [https://github.com/vidyashreerayar/portfolio](https://github.com/vidyashreerayar/portfolio)  
+- Live site: [https://vidyashreerayar.github.io/portfolio/](https://vidyashreerayar.github.io/portfolio/)
 
 ---
 
-## ⚡ Run Locally (Optional)
-If you’d like to clone and explore this project locally:
-```bash
-git clone https://github.com/vidyashreerayar/vidyashreerayar-portfolio.git
-cd vidyashreerayar-portfolio
-open index.html   # or just double-click index.html
+## 📬 Contact
+- Email: [vidyashreerayar325@gmail.com](mailto:vidyashreerayar325@gmail.com)  
+- LinkedIn: [linkedin.com/in/vidyashreerayar](https://linkedin.com/in/vidyashreerayar)  
+- GitHub: [github.com/<your-username>](https://github.com/vidyashreerayar)
