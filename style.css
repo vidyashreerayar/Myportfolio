@@ -176,20 +176,29 @@
     box-shadow:0 4px 12px rgb(0 0 0 / .06);
     transition:background .3s, color .3s;
   }
-  
+ 
   /* Skills */
-  #skills{
-    background:var(--soft-gold);
-    color:#4a3b00;
-    border-radius:12px;
-    box-shadow:0 6px 18px rgba(0,0,0,.06);
-  }
-  #skills h3{
-    color:var(--black);
-    font-weight:800;
-    border-bottom:3px solid var(--gold);
-    padding-bottom:8px; margin-bottom:30px;
-  }
+#skills {
+  background: var(--soft-gold);
+  color: #4a3b00;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.06);
+}
+
+#skills h3 {
+  color: var(--black); /* visible in light mode */
+  font-weight: 800;
+  border-bottom: 3px solid var(--gold);
+  padding-bottom: 8px;
+  margin-bottom: 30px;
+}
+
+/* Dark mode fix for title */
+body.dark-mode #skills h3 {
+  color: var(--gold);          /* bright gold title text */
+  border-bottom-color: var(--gold); /* keep underline visible */
+}
+
   
   /* Projects */
   .projects-container{
