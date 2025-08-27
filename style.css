@@ -312,9 +312,12 @@ body.dark-mode {
     #121314;
 }
 
+/* Keep action links nicely spaced inside details */
+.project-details .project-actions { margin-top: 10px; }
+
+/* Button look for the link (if you haven't added these yet) */
 .project-details .project-link {
   display: inline-block;
-  margin-top: 10px;
   font-weight: 600;
   color: var(--red);
   text-decoration: none;
@@ -323,13 +326,11 @@ body.dark-mode {
   border-radius: 6px;
   transition: background .3s, color .3s;
 }
-
 .project-details .project-link:hover {
   background: var(--red);
   color: #fff;
 }
-
-/* Dark mode */
+/* Dark mode variant */
 body.dark-mode .project-details .project-link {
   border-color: var(--gold);
   color: var(--gold);
