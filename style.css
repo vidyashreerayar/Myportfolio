@@ -311,3 +311,30 @@ body.dark-mode {
     radial-gradient(800px 500px at 100% 20%, rgba(245,196,0,.06), transparent 60%),
     #121314;
 }
+
+.project-details .project-link {
+  display: inline-block;
+  margin-top: 10px;
+  font-weight: 600;
+  color: var(--red);
+  text-decoration: none;
+  border: 1px solid var(--red);
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: background .3s, color .3s;
+}
+
+.project-details .project-link:hover {
+  background: var(--red);
+  color: #fff;
+}
+
+/* Dark mode */
+body.dark-mode .project-details .project-link {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+body.dark-mode .project-details .project-link:hover {
+  background: var(--gold);
+  color: #111;
+}
