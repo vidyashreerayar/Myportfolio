@@ -137,6 +137,23 @@
     box-shadow:0 4px 12px rgba(0,0,0,.25);
     margin-bottom:25px;
   }
+  .hero-section .resume-button { 
+    display: inline-block; 
+    background: #2a72b8;   /* old color */
+    color: #fff; 
+    padding: 14px 30px; 
+    border-radius: 30px; 
+    font-weight: 700; 
+    font-size: 1.15rem; 
+    box-shadow: 0 8px 18px rgba(42,114,184,.45); 
+    border: none; 
+    cursor: pointer; 
+  }
+  .hero-section .resume-button:hover { 
+    background: #005f8f; 
+    box-shadow: 0 10px 22px rgba(0,95,143,.6); 
+  }
+  
   
   /* Dark-mode hero: muted, still on-theme */
   body.dark-mode .hero-section{
@@ -271,3 +288,17 @@
     body, body.dark-mode{ background-attachment:scroll; }
   }
   
+  /* Put this at the very end of style.css */
+body {
+  background:
+    radial-gradient(1200px 600px at -10% -10%, rgba(201,28,28,.06), transparent 60%),
+    radial-gradient(900px 500px at 110% 20%, rgba(245,196,0,.08), transparent 60%),
+    #fafafa;
+}
+
+body.dark-mode {
+  background:
+    radial-gradient(900px 500px at 0% 0%, rgba(201,28,28,.10), transparent 60%),
+    radial-gradient(800px 500px at 100% 20%, rgba(245,196,0,.06), transparent 60%),
+    #121314;
+}
