@@ -137,24 +137,6 @@
     box-shadow:0 4px 12px rgba(0,0,0,.25);
     margin-bottom:25px;
   }
-  .hero-section .resume-button { 
-    display: inline-block; 
-    background: #2a72b8;   /* old color */
-    color: #fff; 
-    padding: 14px 30px; 
-    border-radius: 30px; 
-    font-weight: 700; 
-    font-size: 1.15rem; 
-    box-shadow: 0 8px 18px rgba(42,114,184,.45); 
-    border: none; 
-    cursor: pointer; 
-  }
-  .hero-section .resume-button:hover { 
-    background: #005f8f; 
-    box-shadow: 0 10px 22px rgba(0,95,143,.6); 
-  }
-  
-  
   /* Dark-mode hero: muted, still on-theme */
   body.dark-mode .hero-section{
     background-image:
