@@ -1,7 +1,7 @@
 # Portfolio – Vidyashree Rayar
 
 This repository contains my personal portfolio website, built with **HTML, CSS, and JavaScript**, and themed with the colors of the German flag (black, red, and gold).  
-It showcases my background, skills, and selected projects in **Business Intelligence, Data Analytics, Machine Learning, and Computer Vision**.
+It showcases my background, skills, and selected projects in **NLP, Data Analytics, Machine Learning, and LLMs**.
 
 ---
 
