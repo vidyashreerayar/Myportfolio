@@ -19,8 +19,8 @@ It showcases my background, skills, and selected projects in **NLP, Data Analyti
 ## 🚀 Deployment
 This portfolio is hosted using **GitHub Pages**.
 
-- Repo: [https://github.com/vidyashreerayar/Myportfolio](https://github.com/vidyashreerayar/Myportfolio)  
-- Live site: [https://vidyashreerayar.github.io/Myportfolio/](https://vidyashreerayar.github.io/Myportfolio/)
+- Repo: [https://github.com/vidyashreerayar/portfolio](https://github.com/vidyashreerayar/portfolio)  
+- Live site: [https://vidyashreerayar.github.io/portfolio/](https://vidyashreerayar.github.io/portfolio/)
 
 ---
 
