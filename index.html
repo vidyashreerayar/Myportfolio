@@ -108,55 +108,21 @@
 
 
          <!-- Project 3 -->
-         <button class="project-toggle" type="button" aria-controls="p3" aria-expanded="false">
+<button class="project-toggle" type="button" aria-controls="p3" aria-expanded="false">
 NL-to-SPARQL over Wikidata (Demo Prototype)
 </button>
 <div id="p3" class="project-details" hidden>
 <p><strong>Category:</strong> Knowledge Graphs / NLP</p>
-<p><strong>Description:</strong> Demo pipeline that converts natural-language questions into SPARQL queries and executes them against the Wikidata Query Service. Includes simple intent detection, entity extraction and linking, SPARQL template generation, and result parsing to human-readable answers.</p>
+<p><strong>Description:</strong> Built a demo pipeline converting natural-language questions into SPARQL queries executed over Wikidata. Includes regex-based intent detection, entity extraction, entity linking, and query execution.</p>
 <ul>
-<li>Intent detection (regex-based) for a small set of question types.</li>
-<li>Entity extraction and Wikidata entity linking using wbsearchentities and P31 type checks.</li>
-<li>SPARQL template population and execution against the Wikidata Query Service (JSON parsing).</li>
-<li>Python, requests, API integration, knowledge-graph querying.</li>
+<li>Python, API integration, SPARQL querying, data parsing.</li>
+<li>requests, JSON handling, Wikidata Query Service.</li>
 </ul>
-<p><strong>Supported question types (examples):</strong></p>
-<ul>
-<li>Capital of a country (P36) — Q: "What is the capital of France?" → Paris</li>
-<li>Continent of a country (P30) — Q: "Which continent is Japan in?" → Asia</li>
-<li>Population (latest, P1082 + P585) — Q: "What is the population of India?" → 1,326,093,247 (2020-07-01)</li>
-<li>Head of state (P35) — Q: "Who is the president of France?" → Emmanuel Macron</li>
-<li>Administrative entities contained in a country (P150) — Q: "Which administrative entities does India contain?" → Gujarat, Andhra Pradesh, ...</li>
-</ul>
-<p><strong>How it works (high level):</strong></p>
-<ol>
-<li>Input natural-language question.</li>
-<li>Intent detection maps to supported query type.</li>
-<li>Entity extraction pulls the entity label from the text.</li>
-<li>Entity linking queries Wikidata (wbsearchentities) and prefers candidates via P31 checks.</li>
-<li>Fill SPARQL template with resolved QID and execute against the Wikidata endpoint.</li>
-<li>Parse JSON response and return human-readable answer(s).</li>
-</ol>
-<p><strong>Installation:</strong></p>
-<pre>Python 3.8+
-pip install requests</pre>
-<p><strong>Usage:</strong></p>
-<pre>python nl_to_sparql_wikidata_demo.py
-# or call nl_to_sparql_run("What is the capital of France?") in the script</pre>
-<p><strong>Example run:</strong></p>
-<pre>Q: What is the capital of France?
-{'intent': 'capital', 'entity_label': 'France', 'qid': 'Q142', 'answers': ['Paris']}</pre>
-<p><strong>Limitations:</strong></p>
-<ul>
-<li>Small set of supported question types.</li>
-<li>Regex-based intent detection. Not a full NLP model.</li>
-<li>Heuristic entity linking. Ambiguities may require manual selection.</li>
-<li>No caching, batching, or advanced error handling implemented.</li>
-<li>Answers depend on Wikidata completeness and timestamps.</li>
-</ul>
-<p><strong>Purpose:</strong> Showcase a working NL → SPARQL → Wikidata pipeline and ability to combine NLP preprocessing, knowledge graph querying, and API integration.</p>
 <p>
-<a href="https://github.com/vidyashreerayar/nl-to-sparql-wikidata" target="_blank" rel="noopener" class="project-link">🔗 View on GitHub</a>
+<a href="https://github.com/vidyashreerayar/nl-to-sparql-wikidata"
+target="_blank"
+rel="noopener"
+class="project-link">🔗 View on GitHub</a>
 </p>
 </div>
 
