@@ -1,5 +1,5 @@
 /* =========================
-   German Palette (soft) - updated
+   German Palette (soft) - corrected and scoped
    ========================= */
 :root{
   --black:#0f0f10;
@@ -10,16 +10,21 @@
   --bg:#fafafa;
   --panel:#ffffff;
 
-  /* stronger but soft background for panels */
-  --soft-gold:#fff7e0;        /* slightly cooler than before */
-  --soft-gold-2:#fff3cc;      /* subtle inner tone for gradient */
-  --soft-gold-border:#f3d56a;  /* border / accent */
+  --soft-gold:#fff7e0;
+  --soft-gold-2:#fff3cc;
+  --soft-gold-border:#f3d56a;
   --panel-elev:#fffdf8;
   --muted-text:#4a3b00;
 }
 
+/* Ensure light-mode styles apply unless body.dark-mode is present */
+body:not(.dark-mode) {
+  color:var(--text);
+  background: var(--bg);
+}
+
 /* Sections / panels (light) */
-section:not(.hero-section){
+body:not(.dark-mode) section:not(.hero-section){
   max-width:900px;
   margin:40px auto;
   padding:28px;
@@ -29,8 +34,8 @@ section:not(.hero-section){
   border: 1px solid rgba(0,0,0,.04);
 }
 
-/* Skills block */
-#skills {
+/* Skills block (light only) */
+body:not(.dark-mode) #skills {
   background: linear-gradient(180deg, var(--soft-gold), var(--soft-gold-2));
   color: var(--muted-text);
   border-radius: 12px;
@@ -38,7 +43,7 @@ section:not(.hero-section){
   border: 1px solid var(--soft-gold-border);
   padding:28px;
 }
-#skills h3 {
+body:not(.dark-mode) #skills h3 {
   color: var(--black);
   font-weight:800;
   border-bottom: 3px solid var(--gold);
@@ -46,8 +51,8 @@ section:not(.hero-section){
   margin-bottom:18px;
 }
 
-/* Projects cards */
-.project-panel{
+/* Projects cards (light only) */
+body:not(.dark-mode) .project-panel{
   flex:1 1 45%; min-width:280px;
   background: linear-gradient(180deg, var(--soft-gold-2), #fffaf1);
   padding:18px;
@@ -57,11 +62,11 @@ section:not(.hero-section){
   border:1px solid var(--soft-gold-border);
   transition: transform .12s ease, box-shadow .12s ease;
 }
-.project-panel:hover{
+body:not(.dark-mode) .project-panel:hover{
   transform: translateY(-6px);
   box-shadow:0 18px 40px rgba(0,0,0,.09);
 }
-.project-panel h4{
+body:not(.dark-mode) .project-panel h4{
   margin-bottom:12px;
   color:var(--red);
   border-bottom:2px solid var(--gold);
@@ -69,21 +74,21 @@ section:not(.hero-section){
   font-size:1.18rem; font-weight:800;
 }
 
-/* Project details */
-.project-details{
+/* Project details (light only) */
+body:not(.dark-mode) .project-details{
   background: #fffaf0;
   border:1px solid var(--soft-gold-border);
   border-left:4px solid var(--red);
   padding:14px; margin-bottom:10px; border-radius:8px; color:var(--muted-text);
 }
-.project-details .project-link{
+body:not(.dark-mode) .project-details .project-link{
   display:inline-block; font-weight:600; color:var(--red);
   border:1px solid var(--red); padding:6px 12px; border-radius:6px;
 }
-.project-details .project-link:hover{ background:var(--red); color:#fff; }
+body:not(.dark-mode) .project-details .project-link:hover{ background:var(--red); color:#fff; }
 
-/* Contact */
-#contact{
+/* Contact (light only) */
+body:not(.dark-mode) #contact{
   text-align:center; font-size:1.05rem;
   background: linear-gradient(180deg, var(--soft-gold-2), var(--soft-gold));
   border-radius:12px;
@@ -93,7 +98,11 @@ section:not(.hero-section){
   border:1px solid var(--soft-gold-border);
 }
 
-/* Dark-mode overrides: keep German theme but increase contrast */
+/* Dark-mode styles only when body.dark-mode is present */
+body.dark-mode{
+  color:#e6e6e6;
+  background:#121314;
+}
 body.dark-mode section:not(.hero-section){
   background: linear-gradient(180deg,#111215,#171717);
   color:#e6e6e6;
@@ -125,7 +134,6 @@ body.dark-mode .project-details{
   border-left:4px solid rgba(201,28,28,.9);
 }
 
-/* accessibility tweak: ensure link contrast on dark */
 body.dark-mode .project-details .project-link{
   border-color:var(--gold);
   color:var(--gold);
@@ -135,8 +143,10 @@ body.dark-mode .project-details .project-link:hover{
   color:#111;
 }
 
-/* small utility */
+/* accessibility tweak and responsive */
 @media (max-width:768px){
   .project-panel{ transform:none; box-shadow:0 6px 16px rgba(0,0,0,.06); }
   #skills, .project-panel, #contact { padding:18px; margin:18px 12px; }
 }
+
+/* End of stylesheet */
