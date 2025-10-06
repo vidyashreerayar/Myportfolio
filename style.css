@@ -1,199 +1,323 @@
 /* =========================
-   German Palette (soft) - corrected and scoped
+   German Palette (soft)
    ========================= */
-:root{
-  --black:#0f0f10;
-  --red:#C91C1C;
-  --gold:#F5C400;
-
-  --text:#222;
-  --bg:#fafafa;
-  --panel:#ffffff;
-
-  --soft-gold:#fff7e0;
-  --soft-gold-2:#fff3cc;
-  --soft-gold-border:#f3d56a;
-  --panel-elev:#fffdf8;
-  --muted-text:#4a3b00;
-}
-
-/* Ensure light-mode styles apply unless body.dark-mode is present */
-body:not(.dark-mode) {
-  color:var(--text);
-  background: var(--bg);
-}
-
-/* Sections / panels (light) */
-body:not(.dark-mode) section:not(.hero-section){
-  max-width:900px;
-  margin:40px auto;
-  padding:28px;
-  border-radius:12px;
-  background: linear-gradient(180deg, var(--panel-elev), var(--panel));
-  box-shadow: 0 8px 24px rgba(15,15,16,.06);
-  border: 1px solid rgba(0,0,0,.04);
-}
-
-/* Skills block (light only) */
-body:not(.dark-mode) #skills {
-  background: linear-gradient(180deg, var(--soft-gold), var(--soft-gold-2));
-  color: var(--muted-text);
+   :root{
+    --black:#0f0f10;
+    --red:#C91C1C;      /* softer red */
+    --gold:#F5C400;     /* softer gold */
+  
+    --text:#222;
+    --bg:#fafafa;
+    --panel:#ffffff;
+  
+    --soft-gold:#fff7d6;
+    --soft-gold-border:#ffe08a;
+  }
+  
+  /* =========================
+     Base / Reset
+     ========================= */
+  *{ box-sizing:border-box; margin:0; padding:0; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+  
+  body{
+    color:var(--text);
+    line-height:1.6;
+    padding-bottom:50px;
+    transition:background .3s, color .3s;
+    /* Light background: airy with faint color glows */
+    background:
+      radial-gradient(1200px 600px at -10% -10%, rgba(201,28,28,.06), transparent 60%),
+      radial-gradient(900px 500px at 110% 20%, rgba(245,196,0,.08), transparent 60%),
+      var(--bg);
+  }
+  
+  /* Dark background: gentle, not harsh */
+  body.dark-mode{
+    color:#e8e8e8;
+    background:
+      radial-gradient(900px 500px at 0% 0%, rgba(201,28,28,.10), transparent 60%),
+      radial-gradient(800px 500px at 100% 20%, rgba(245,196,0,.06), transparent 60%),
+      #121314;
+  }
+  
+  h1,h2,h3,h4{ margin-bottom:15px; color:#222; }
+  body.dark-mode h1,
+  body.dark-mode h2,
+  body.dark-mode h3,
+  body.dark-mode h4{ color:#f0f0f0; }
+  
+  a{ color:var(--red); text-decoration:none; transition:color .2s; }
+  a:hover{ color:#8f1212; }
+  
+  /* =========================
+     Navbar (refreshed)
+     ========================= */
+  .navbar{
+    position:sticky; top:0; z-index:9999;
+    padding:12px 24px;
+    background:rgba(0,0,0,.88);
+    border-bottom:1px solid rgba(245,196,0,.25);
+    box-shadow:0 4px 14px rgba(0,0,0,.25);
+    backdrop-filter:saturate(140%) blur(6px);
+    -webkit-backdrop-filter:saturate(140%) blur(6px);
+  }
+  .navbar ul{
+    max-width:1100px; margin:0 auto;
+    display:flex; align-items:center; justify-content:flex-start;
+    list-style:none; gap:28px; flex-wrap:wrap;
+  }
+  .navbar a,
+  #darkModeToggle{
+    appearance:none; -webkit-appearance:none;
+    background:none; border:0; padding:8px 12px;
+    color:#f2f2f2; font-weight:600; font-size:.98rem;
+    border-radius:10px; cursor:pointer;
+    text-decoration:none;
+    transition:background .2s, color .2s, transform .06s;
+    position:relative;
+  }
+  /* Gold underline on hover/focus */
+  .navbar a::after{
+    content:""; position:absolute; left:10px; right:10px; bottom:6px;
+    height:2px; background:var(--gold);
+    transform:scaleX(0); transform-origin:left; transition:transform .18s;
+  }
+  .navbar a:hover::after,
+  .navbar a:focus-visible::after{ transform:scaleX(1); }
+  
+  .navbar a:hover,
+  #darkModeToggle:hover{ background:rgba(245,196,0,.12); color:#fff; }
+  .navbar a:active,
+  #darkModeToggle:active{ transform:translateY(1px); }
+  
+  .navbar .nav-link.active{
+    color:var(--gold);
+    background:rgba(245,196,0,.16);
+  }
+  
+  body.dark-mode .navbar{
+    background:rgba(15,15,16,.92);
+    border-bottom-color:rgba(245,196,0,.28);
+  }
+  
+  @media (max-width:768px){
+    .navbar ul{ gap:14px; }
+  }
+  
+  /* =========================
+     Hero (full-width banner)
+     ========================= */
+  .hero-section{
+    /* make it bleed edge-to-edge even inside centered layouts */
+    width:100vw;
+    margin-left:calc(50% - 50vw);
+    margin-right:calc(50% - 50vw);
+  
+    margin-top:0; margin-bottom:60px;
+    padding:72px 20px;
+    text-align:center;
+    border-radius:0;
+    box-shadow:0 4px 10px rgba(0,0,0,.10);
+  
+    /* Soft flag-inspired gradient + subtle overlay for readability */
+    background-image:
+      linear-gradient(0deg, rgba(0,0,0,.06), rgba(0,0,0,.06)),
+      linear-gradient(90deg, #171718 0%, #c03d3d 40%, #f2c94c 100%);
+    color:#fff;
+  }
+  
+  .hero-section h1,
+  .hero-section h2,
+  .hero-section p{ color:#fff; }
+  
+  .hero-section img{
+    width:160px; height:160px;
+    border-radius:50%;
+    border:5px solid #fff;
+    box-shadow:0 4px 12px rgba(0,0,0,.25);
+    margin-bottom:25px;
+  }
+  /* Dark-mode hero: muted, still on-theme */
+  body.dark-mode .hero-section{
+    background-image:
+      linear-gradient(0deg, rgba(0,0,0,.20), rgba(0,0,0,.20)),
+      linear-gradient(90deg, #151516 0%, #7a2a2a 45%, #b9902a 100%); /* toned-down gold */
+    box-shadow:0 4px 12px rgba(0,0,0,.25);
+  }
+  
+  /* =========================
+     Sections & Cards
+     ========================= */
+  /* Apply panel styling to all sections EXCEPT the hero */
+  section:not(.hero-section){
+    max-width:900px;
+    margin:40px auto;
+    padding:30px 20px;
+    background:var(--panel);
+    border-radius:10px;
+    box-shadow:0 4px 12px rgb(0 0 0 / .06);
+    transition:background .3s, color .3s;
+  }
+ 
+  /* Skills */
+#skills {
+  background: var(--soft-gold);
+  color: #4a3b00;
   border-radius: 12px;
-  box-shadow: 0 8px 22px rgba(10,10,10,.06);
-  border: 1px solid var(--soft-gold-border);
-  padding:28px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.06);
 }
-body:not(.dark-mode) #skills h3 {
-  color: var(--black);
-  font-weight:800;
+
+#skills h3 {
+  color: var(--black); /* visible in light mode */
+  font-weight: 800;
   border-bottom: 3px solid var(--gold);
-  padding-bottom:8px;
-  margin-bottom:18px;
+  padding-bottom: 8px;
+  margin-bottom: 30px;
 }
 
-/* Projects cards (light only) */
-body:not(.dark-mode) .project-panel{
-  flex:1 1 45%; min-width:280px;
-  background: linear-gradient(180deg, var(--soft-gold-2), #fffaf1);
-  padding:18px;
-  border-radius:10px;
-  box-shadow:0 10px 30px rgba(0,0,0,.06);
-  color:var(--muted-text);
-  border:1px solid var(--soft-gold-border);
-  transition: transform .12s ease, box-shadow .12s ease;
-}
-body:not(.dark-mode) .project-panel:hover{
-  transform: translateY(-6px);
-  box-shadow:0 18px 40px rgba(0,0,0,.09);
-}
-body:not(.dark-mode) .project-panel h4{
-  margin-bottom:12px;
-  color:var(--red);
-  border-bottom:2px solid var(--gold);
-  padding-bottom:6px;
-  font-size:1.18rem; font-weight:800;
+/* Dark mode fix for title */
+body.dark-mode #skills h3 {
+  color: var(--gold);          /* bright gold title text */
+  border-bottom-color: var(--gold); /* keep underline visible */
 }
 
-/* Project details (light only) */
-body:not(.dark-mode) .project-details{
-  background: #fffaf0;
-  border:1px solid var(--soft-gold-border);
-  border-left:4px solid var(--red);
-  padding:14px; margin-bottom:10px; border-radius:8px; color:var(--muted-text);
+  
+  /* Projects */
+  .projects-container{
+    margin-top:20px;
+    display:flex; gap:20px; justify-content:center; align-items:flex-start; flex-wrap:wrap;
+  }
+  .project-panel{
+    flex:1 1 45%; min-width:280px;
+    background:var(--soft-gold);
+    padding:15px; border-radius:8px;
+    box-shadow:0 4px 12px rgba(0,0,0,.06);
+    color:#4a3b00; border:1px solid var(--soft-gold-border);
+  }
+  .project-panel h4{
+    margin-bottom:15px;
+    color:var(--red);
+    border-bottom:2px solid var(--gold);
+    padding-bottom:5px;
+    font-size:1.3rem; font-weight:800;
+  }
+  
+  /* Projects master toggle */
+  #projectsToggle.projects-toggle{
+    background:#fff5c2; color:#111;
+    padding:16px 24px; width:80%; max-width:600px;
+    margin:20px auto; text-align:center;
+    border:1px solid var(--soft-gold-border);
+    border-radius:8px; font-weight:800; font-size:1.5rem;
+    cursor:pointer; display:flex; justify-content:center; align-items:center; gap:10px;
+    box-shadow:0 2px 5px rgba(0,0,0,.15);
+  }
+  #projectsToggle:hover{ background:#ffe98f; }
+  
+  /* Individual project toggles */
+  .project-toggle{
+    background:#fff8d9; color:#111;
+    padding:10px 15px; width:100%; text-align:left;
+    border:1px solid var(--soft-gold-border);
+    border-radius:5px; font-weight:700; cursor:pointer; margin-bottom:8px;
+  }
+  .project-toggle:hover{ filter:brightness(.98); }
+  
+  /* Project details */
+  .project-details{
+    background:#fffaf0;
+    border:1px solid var(--soft-gold-border);
+    border-left:4px solid var(--red);
+    padding:15px; margin-bottom:10px; border-radius:5px; color:#4a3b00;
+  }
+  .project-details ul{ list-style:disc; padding-left:20px; margin:10px 0; }
+  .project-details li{ margin-bottom:5px; }
+  
+  /* Contact */
+  #contact{
+    text-align:center; font-size:1.1rem;
+    background:var(--soft-gold);
+    border-radius:12px;
+    box-shadow:0 6px 18px rgba(0,0,0,.06);
+    padding:30px 20px; color:#4a3b00;
+    max-width:900px; margin:40px auto;
+  }
+  #contact a{ font-weight:700; text-decoration:underline; color:var(--red); }
+  #contact a:hover{ color:#111; }
+  
+  /* =========================
+     Back to Top
+     ========================= */
+  #backToTop{
+    position:fixed; bottom:30px; right:30px;
+    background:var(--red); color:#fff; border:none;
+    padding:12px 16px; border-radius:50%;
+    cursor:pointer; display:none; font-size:1.5rem;
+    box-shadow:0 4px 8px rgba(0,0,0,.20); z-index:9999;
+  }
+  #backToTop:hover{ background:#b80000; }
+  
+  /* =========================
+     Dark-mode panel tweaks
+     ========================= */
+  body.dark-mode section:not(.hero-section){ background:#1a1b1d; color:#e6e6e6; }
+  body.dark-mode .project-panel,
+  body.dark-mode #skills,
+  body.dark-mode #contact{
+    background:#2a2414; border-color:#6b5a1a; color:#e6dcc1;
+  }
+  body.dark-mode .project-details{ background:#262012; color:#e6dcc1; border-color:#6b5a1a; }
+  
+  /* =========================
+     Responsive
+     ========================= */
+  @media (max-width:768px){
+    .projects-container{ flex-direction:column; }
+    .project-panel{ flex:1 1 100%; }
+  
+    /* avoid jank on mobile */
+    body, body.dark-mode{ background-attachment:scroll; }
+  }
+  
+  /* Put this at the very end of style.css */
+body {
+  background:
+    radial-gradient(1200px 600px at -10% -10%, rgba(201,28,28,.06), transparent 60%),
+    radial-gradient(900px 500px at 110% 20%, rgba(245,196,0,.08), transparent 60%),
+    #fafafa;
 }
-body:not(.dark-mode) .project-details .project-link{
-  display:inline-block; font-weight:600; color:var(--red);
-  border:1px solid var(--red); padding:6px 12px; border-radius:6px;
-}
-body:not(.dark-mode) .project-details .project-link:hover{ background:var(--red); color:#fff; }
 
-/* Contact (light only) */
-body:not(.dark-mode) #contact{
-  text-align:center; font-size:1.05rem;
-  background: linear-gradient(180deg, var(--soft-gold-2), var(--soft-gold));
-  border-radius:12px;
-  box-shadow:0 12px 32px rgba(0,0,0,.06);
-  padding:28px; color:var(--muted-text);
-  max-width:900px; margin:40px auto;
-  border:1px solid var(--soft-gold-border);
+body.dark-mode {
+  background:
+    radial-gradient(900px 500px at 0% 0%, rgba(201,28,28,.10), transparent 60%),
+    radial-gradient(800px 500px at 100% 20%, rgba(245,196,0,.06), transparent 60%),
+    #121314;
 }
 
-/* Dark-mode styles only when body.dark-mode is present */
-body.dark-mode{
-  color:#e6e6e6;
-  background:#121314;
+/* Keep action links nicely spaced inside details */
+.project-details .project-actions { margin-top: 10px; }
+
+/* Button look for the link (if you haven't added these yet) */
+.project-details .project-link {
+  display: inline-block;
+  font-weight: 600;
+  color: var(--red);
+  text-decoration: none;
+  border: 1px solid var(--red);
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: background .3s, color .3s;
 }
-body.dark-mode section:not(.hero-section){
-  background: linear-gradient(180deg,#111215,#171717);
-  color:#e6e6e6;
-  border:1px solid rgba(255,215,80,.06);
-  box-shadow: 0 8px 26px rgba(0,0,0,.55);
+.project-details .project-link:hover {
+  background: var(--red);
+  color: #fff;
 }
-
-body.dark-mode #skills{
-  background: linear-gradient(180deg,#261e10,#2f2411);
-  color:#efe6c7;
-  border:1px solid rgba(243,213,106,.12);
+/* Dark mode variant */
+body.dark-mode .project-details .project-link {
+  border-color: var(--gold);
+  color: var(--gold);
 }
-body.dark-mode #skills h3{
-  color:var(--gold);
-  border-bottom-color: rgba(245,196,0,.22);
+body.dark-mode .project-details .project-link:hover {
+  background: var(--gold);
+  color: #111;
 }
-
-body.dark-mode .project-panel,
-body.dark-mode #contact{
-  background: linear-gradient(180deg,#221b12,#2a2414);
-  color:#e6dcc1;
-  border:1px solid rgba(107,90,26,.12);
-  box-shadow:0 12px 30px rgba(0,0,0,.5);
-}
-body.dark-mode .project-details{
-  background:#231d14;
-  color:#e6dcc1;
-  border:1px solid rgba(107,90,26,.14);
-  border-left:4px solid rgba(201,28,28,.9);
-}
-
-body.dark-mode .project-details .project-link{
-  border-color:var(--gold);
-  color:var(--gold);
-}
-body.dark-mode .project-details .project-link:hover{
-  background:var(--gold);
-  color:#111;
-}
-
-/* accessibility tweak and responsive */
-@media (max-width:768px){
-  .project-panel{ transform:none; box-shadow:0 6px 16px rgba(0,0,0,.06); }
-  #skills, .project-panel, #contact { padding:18px; margin:18px 12px; }
-}
-
-/* ======= Emergency fixes: constrain oversized header/profile images and restore layout ======= */
-/* Wrap main content in a centered container if not present */
-.site-container, .container, main{
-  max-width:1100px;
-  margin:0 auto;
-  padding:0 20px;
-}
-
-/* Protect hero / header images from growing full-viewport unexpectedly */
-/* Accepts both <img class="hero-img"> and <img class="profile-img"> patterns */
-.hero-section img, .profile-img, header img, .hero-img{
-  width:160px;          /* fixed visual avatar size */
-  max-width:160px;
-  height:160px;
-  max-height:160px;
-  object-fit:cover;
-  display:block;
-  margin:0 auto 18px auto;
-  border-radius:50%;
-  border:4px solid #fff;
-  box-shadow:0 6px 18px rgba(0,0,0,.18);
-}
-
-/* If the page uses a full-bleed banner image, limit its height and cover behavior */
-.banner-img, .header-banner, .hero-banner{
-  width:100%;
-  max-height:260px;
-  object-fit:cover;
-  display:block;
-}
-
-/* Ensure all generic images do not overflow layout */
-img{ max-width:100%; height:auto; }
-
-/* Restore default heading sizing for missing theme link cases */
-h1{ font-size:2.2rem; line-height:1.05; margin-bottom:8px; }
-h2{ font-size:1.5rem; margin-bottom:6px; }
-
-/* If CSS file isn't applied early, this small block ensures basic spacing */
-header, main, footer, section{ box-sizing:border-box; }
-
-/* If the page was zoomed or scaled inside a wrapper, force normal flow */
-body{ transform:none !important; zoom:1 !important; }
-
-/* Accessibility: avoid tiny text inside panels */
-.project-details, #skills, .project-panel{ font-size:1rem; }
-
-/* End emergency fixes */
